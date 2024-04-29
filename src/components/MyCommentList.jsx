@@ -42,7 +42,8 @@ class CommentList extends Component {
     })
       .then((response) => {
         if (response.ok) {
-          this.fetchAllComment();
+          // this.fetchAllComment();
+          this.props.updateComment(this.props.asin);
           return response.json();
         } else {
           throw new Error("Something went wrong");
