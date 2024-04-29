@@ -2,8 +2,6 @@ import { Component } from "react";
 import { ListGroup, Alert, Button } from "react-bootstrap";
 
 class CommentList extends Component {
-
-
   // fetchAllComment = () => {
   //   const myKey =
   //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjJmOGE2NjI4MzJlODAwMTk4NzMwOWEiLCJpYXQiOjE3MTQzOTE2NTQsImV4cCI6MTcxNTYwMTI1NH0.8LJndh4fAd8e9THgG8NnG1HZNV-PJ1_p9RlB9odR_Hc";
@@ -64,9 +62,16 @@ class CommentList extends Component {
       <ListGroup as="ol" numbered className="my-3 commentList">
         {this.props.elements.map((comment) => {
           return (
-            <ListGroup.Item as="li" key={comment._id} className="d-flex justify-content-between align-items-start">
-              <p> {comment.author}: {comment.comment} - Rate: {comment.rate}</p>
-             
+            <ListGroup.Item
+              as="li"
+              key={comment._id}
+              className="d-flex justify-content-between align-items-start"
+            >
+              <p>
+                {" "}
+                {comment.author}: {comment.comment} - Rate: {comment.rate}
+              </p>
+
               <Button
                 variant="danger"
                 size="sm"

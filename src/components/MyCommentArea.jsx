@@ -46,10 +46,7 @@ class CommentArea extends Component {
         <h4>Comments:</h4>
         <CommentList asin={this.props.asin} elements={this.state.elements} />
         <h4>Add a comment</h4>
-        <CustomComment
-          asin={this.props.asin}
-          updateComment={this.getComment}
-        />
+        <CustomComment asin={this.props.asin} updateComment={this.getComment} />
       </div>
     );
   }

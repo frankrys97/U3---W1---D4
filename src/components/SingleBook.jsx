@@ -32,11 +32,7 @@ class MySingleBook extends React.Component {
   render() {
     return (
       <Col>
-        <Card
-          className={`h-100 card ${
-            this.state.selected ? "selected" : ""
-          }`}
-        >
+        <Card className={`h-100 card ${this.state.selected ? "selected" : ""}`}>
           <Card.Img
             variant="top"
             src={this.props.book.img}
@@ -51,7 +47,7 @@ class MySingleBook extends React.Component {
             </Card.Text>
             <Button variant="primary">Buy It</Button>
           </Card.Body>
-         {this.state.selected && <Comment asin={this.props.book.asin}/>}
+          {this.state.selected && <Comment asin={this.props.book.asin} />}
         </Card>
       </Col>
     );
