@@ -1,10 +1,14 @@
 import CommentList from "./MyCommentList";
 import CustomComment from "./CustomComment";
 import { Component } from "react";
+import Loading from "./Loading";
+import Error from "./Error";
 
 class CommentArea extends Component {
   state = {
     elements: [],
+    isLoading: true,
+    isError: false,
   };
 
   getComment = () => {
@@ -29,10 +33,11 @@ class CommentArea extends Component {
       })
       .then((elements) => {
         console.log(elements);
-        this.setState({ elements });
+        this.setState({ elements, isLoading: false });
       })
       .catch((error) => {
         console.log(error);
+        this.setState({ isError: true, isLoading: false });
       });
   };
 
@@ -42,16 +47,31 @@ class CommentArea extends Component {
 
   render() {
     return (
-      <div className="m-2">
-        <h4>Comments:</h4>
-        <CommentList
-          asin={this.props.asin}
-          elements={this.state.elements}
-          updateComment={this.getComment}
-        />
-        <h4>Add a comment</h4>
-        <CustomComment asin={this.props.asin} updateComment={this.getComment} />
-      </div>
+      <>
+        {this.state.isLoading && (
+          <div className="d-flex justify-content-center">
+            <Loading />
+          </div>
+        )}
+
+        {this.state.isError && <Error />}
+
+        {!this.state.isLoading && !this.state.isError && (
+          <div className="m-2">
+            <h4>Comments:</h4>
+            <CommentList
+              asin={this.props.asin}
+              elements={this.state.elements}
+              updateComment={this.getComment}
+            />
+            <h4>Add a comment</h4>
+            <CustomComment
+              asin={this.props.asin}
+              updateComment={this.getComment}
+            />
+          </div>
+        )}
+      </>
     );
   }
 }

@@ -69,7 +69,6 @@ class CommentList extends Component {
               className="d-flex justify-content-between align-items-start"
             >
               <p>
-                {" "}
                 {comment.author}: {comment.comment} - Rate: {comment.rate}
               </p>
 
